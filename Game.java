@@ -1,4 +1,4 @@
-/**
+ /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
  *  can walk around some scenery. That's all. It should really be extended 
@@ -30,34 +30,91 @@ public class Game
     }
 
     /**
-     * Create all the rooms and link their exits together.
+     * Create all the towns and link their neighboring towns together.
      */
     private void createRooms()
-    {
-        Room outside, theater, pub, lab, office;
+    { 
+        Room palletTown, viridianCity, victoryRoad, indigoPlateau, viridianForest, pewterCity, mtMoon,
+        ceruleanCity, billsHouse, rockTunnel, saffronCity, vermillionCity, lavenderTown, celadonCity, 
+        bikeRoute, fuschiaCity, cinnabarIsland; 
       
-        // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        // create locations
+        palletTown = new Room("in pallet town");
+        viridianCity = new Room("in viridian city");
+        victoryRoad = new Room("at victory road");
+        indigoPlateau = new Room("at the indigo plateau");
+        viridianForest = new Room("in viridian forest");
+        pewterCity = new Room("in pewter city");
+        mtMoon = new Room("in mt moon");
+        ceruleanCity = new Room("in cerulean city");
+        billsHouse = new Room("in bills house");
+        rockTunnel = new Room("in rock tunnel");
+        saffronCity = new Room("in saffron city");
+        vermillionCity = new Room("in vermillion city");
+        lavenderTown = new Room("in lavender town");
+        celadonCity = new Room("in celadon city");
+        bikeRoute = new Room("on bike route");
+        fuschiaCity = new Room("in fuschia city");
+        cinnabarIsland = new Room("on cinnabar island");
         
-        // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
+        // initialize neighboring towns
+        palletTown.setExit("north", viridianCity);
+        palletTown.setExit("south", cinnabarIsland);
 
-        theater.setExit("west", outside);
+        viridianCity.setExit("north", viridianForest);
+        viridianCity.setExit("south", palletTown);
+        viridianCity.setExit("west", victoryRoad);
 
-        pub.setExit("east", outside);
+        victoryRoad.setExit("north", indigoPlateau);
+        victoryRoad.setExit("south", viridianCity);
+        
+        indigoPlateau.setExit("south", victoryRoad);
 
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
+        viridianForest.setExit("north", pewterCity);
+        viridianForest.setExit("south", viridianCity);
 
-        office.setExit("west", lab);
-
-        currentRoom = outside;  // start game outside
+        pewterCity.setExit("east", mtMoon);
+        pewterCity.setExit("south", viridianCity);
+        
+        mtMoon.setExit("east", ceruleanCity);
+        mtMoon.setExit("west", pewterCity);
+        
+        ceruleanCity.setExit("north", billsHouse);
+        ceruleanCity.setExit("east", rockTunnel);
+        ceruleanCity.setExit("south", saffronCity);
+        ceruleanCity.setExit("west", ceruleanCity);
+        
+        billsHouse.setExit("south", ceruleanCity);
+        
+        rockTunnel.setExit("west", ceruleanCity);
+        rockTunnel.setExit("south", lavenderTown);
+        
+        saffronCity.setExit("north", ceruleanCity);
+        saffronCity.setExit("east", lavenderTown);
+        saffronCity.setExit("south", vermillionCity);
+        saffronCity.setExit("west", celadonCity);
+        
+        vermillionCity.setExit("north", saffronCity);
+        //vermillionCity.setExit("east", );
+        
+        lavenderTown.setExit("north", rockTunnel);
+        //lavenderTown.setExit("south", );
+        lavenderTown.setExit("west", saffronCity);
+        
+        celadonCity.setExit("east", saffronCity);
+        celadonCity.setExit("west", bikeRoute);
+        
+        bikeRoute.setExit("east", celadonCity);
+        bikeRoute.setExit("south", fuschiaCity);
+        
+        //fuschiaCity.setExit("east", );
+        fuschiaCity.setExit("south", cinnabarIsland);
+        fuschiaCity.setExit("west", bikeRoute);
+        
+        cinnabarIsland.setExit("north", palletTown);
+        cinnabarIsland.setExit("east", fuschiaCity);
+        
+        currentRoom = palletTown;  // start game in pallet town
     }
 
     /**
@@ -84,8 +141,8 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Welcome to the World of Pokemon!");
+        System.out.println("You are now in the Kanto Region.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -114,7 +171,7 @@ public class Game
             case GO:
                 goRoom(command);
                 break;
-
+                
             case QUIT:
                 wantToQuit = quit(command);
                 break;
@@ -152,7 +209,7 @@ public class Game
 
         String direction = command.getSecondWord();
 
-        // Try to leave current room.
+        // Try to leave current location.
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
