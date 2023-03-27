@@ -118,6 +118,19 @@ public class Game
     }
 
     /**
+     * Create all the items.
+     */
+    private void createItems()
+    { 
+        Item pokeBall, pokeFlute; 
+      
+        // create items
+        pokeBall = new Item("A tool for catching wild Pokémon.");
+        pokeFlute = new Item("A sweet-sounding flute that awakens Pokémon.");
+    }    
+
+    
+    /**
      *  Main play routine.  Loops until end of play.
      */
     public void play() 
@@ -175,6 +188,10 @@ public class Game
             case QUIT:
                 wantToQuit = quit(command);
                 break;
+                
+            case BAG:
+                printBag();
+                break;
         }
         return wantToQuit;
     }
@@ -220,7 +237,16 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
     }
-
+    
+    /**
+     * Print out which items are in your bag.
+     */
+    private void printBag() 
+    {
+        System.out.println("Items:");
+        parser.showCommands();
+    }
+    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
