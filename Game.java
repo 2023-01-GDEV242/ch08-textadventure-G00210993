@@ -122,11 +122,11 @@ public class Game
      */
     private void createItems()
     { 
-        Item pokeBall, pokeFlute; 
+//        Item pokeBall, pokeFlute; 
       
         // create items
-        pokeBall = new Item("A tool for catching wild Pokémon.");
-        pokeFlute = new Item("A sweet-sounding flute that awakens Pokémon.");
+//        pokeBall = new Item("A tool for catching wild Pokémon.");
+//        pokeFlute = new Item("A sweet-sounding flute that awakens Pokémon.");
     }    
 
     
@@ -192,6 +192,10 @@ public class Game
             case BAG:
                 printBag();
                 break;
+                
+            case MAP:
+                printMap();
+                break;
         }
         return wantToQuit;
     }
@@ -241,10 +245,16 @@ public class Game
     /**
      * Print out which items are in your bag.
      */
-    private void printBag() 
-    {
+    private void printBag() {
         System.out.println("Items:");
         parser.showCommands();
+    }
+    
+    /**
+     * Print out current town and neighboring towns 
+     */
+    private void printMap() {
+        System.out.println("Current Location: " + currentRoom.getLongDescription());
     }
     
     /** 
