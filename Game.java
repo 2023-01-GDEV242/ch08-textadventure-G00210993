@@ -19,6 +19,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Room item;
         
     /**
      * Create the game and initialise its internal map.
@@ -27,6 +28,7 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+        createItems();
     }
 
     /**
@@ -125,8 +127,12 @@ public class Game
         Item pokeBall, pokeFlute; 
       
         // create items
-        //pokeBall = new Item("A tool for catching wild Pokémon.");
-        //pokeFlute = new Item("A sweet-sounding flute that awakens Pokémon.");
+        pokeBall = new Item("Poke Ball", "A tool for catching wild Pokémon.", 10);
+        pokeFlute = new Item("Poke Flute", "A sweet-sounding flute that awakens Pokémon.", 5);
+        
+        // initialize items
+        
+        
     }    
 
     

@@ -88,4 +88,11 @@ public class Room
     {
         return exits.get(direction);
     }
+    
+    /**
+     * Items
+     */
+//    private String getItemName() {
+//        
+//    }
 }

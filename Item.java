@@ -14,6 +14,7 @@
 public class Item 
 {
     private String itemName;
+    private String itemDescription;
     private int itemWeight;
 
     /**
@@ -21,9 +22,10 @@ public class Item
      * @param itemName The item's name.
      * @param itemWeight the item's weight.
      */
-    public Item(String itemName, int itemWeight) 
+    public Item(String itemName, String itemDescription, int itemWeight) 
     {
         this.itemName = itemName;
+        this.itemDescription = itemDescription;
         this.itemWeight = itemWeight;
     }
 }
