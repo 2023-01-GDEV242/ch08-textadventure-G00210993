@@ -14,18 +14,31 @@
 public class Item 
 {
     private String itemName;
-    private String itemDescription;
+    private String itemDesc;
     private int itemWeight;
 
     /**
-     * Create an Item described "itemName".
+     * Create an Item named "itemName".
      * @param itemName The item's name.
+     * @param itemDesc The item's description.
      * @param itemWeight the item's weight.
      */
-    public Item(String itemName, String itemDescription, int itemWeight) 
+    public Item(String itemName, String itemDesc, int itemWeight) 
     {
         this.itemName = itemName;
-        this.itemDescription = itemDescription;
+        this.itemDesc = itemDesc;
         this.itemWeight = itemWeight;
+    }
+    
+    public String getitemName() {
+        return itemName;
+    }
+    
+    public String getItemDesc() {
+        return itemDesc;
+    }
+    
+    public int getItemWeight() {
+        return itemWeight;
     }
 }
