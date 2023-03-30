@@ -1,4 +1,6 @@
- /**
+import java.util.ArrayList; 
+
+/**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
  *  can walk around some scenery. That's all. It should really be extended 
@@ -19,8 +21,9 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private Room item;
-        
+    private int item;
+    ArrayList<String> bag = new ArrayList<String>();
+
     /**
      * Create the game and initialise its internal map.
      */
@@ -131,7 +134,7 @@ public class Game
         pokeFlute = new Item("Poke Flute", "A sweet-sounding flute that awakens Pokémon.", 5);
         
         // initialize items
-        
+        //palletTown.setItem("pokeBall", 10);
         
     }    
 
@@ -199,9 +202,9 @@ public class Game
                 printBag();
                 break;
                 
-            case MAP:
-                printMap();
-                break;
+//            case LOOK:
+//                look();
+//               break;
         }
         return wantToQuit;
     }
@@ -249,19 +252,24 @@ public class Game
     }
     
     /**
+     * Look 
+     */
+//    private void look() {
+//        if(currentRoom == palletTown) {
+//           System.out.println("You found a poke ball!");
+//        }
+        
+//        else {
+//           System.out.println("You found nothing");
+//        }
+//    }
+    
+    /**
      * Print out which items are in your bag and how much they weigh.
      */
     private void printBag() {
         System.out.println("Items:");
         parser.showCommands();
-    }
-    
-    /**
-     * Print out current town and neighboring towns 
-     */
-    private void printMap() {
-        System.out.println("Current Location: " + currentRoom.getLongDescription());
-        System.out.println("North: " + "East: " + "South: " + "West: ");
     }
     
     /** 

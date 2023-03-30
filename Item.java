@@ -30,14 +30,24 @@ public class Item
         this.itemWeight = itemWeight;
     }
     
-    public String getitemName() {
+    /**
+     * 
+     * @return
+     */
+    public String getItemName() {
         return itemName;
     }
     
+    /**
+     * 
+     */
     public String getItemDesc() {
         return itemDesc;
     }
     
+    /**
+     * 
+     */
     public int getItemWeight() {
         return itemWeight;
     }

@@ -20,7 +20,8 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
-
+    private HashMap<String, Item> items;        // stores items of this room.
+    
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
@@ -31,6 +32,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        items = new HashMap<>();
     }
 
     /**
@@ -43,6 +45,11 @@ public class Room
         exits.put(direction, neighbor);
     }
 
+    public void setItem(String itemName, String itemDesc, int itemWeight) { 
+        Item newItem = new Item(itemName, itemDesc, itemWeight);
+        items.put(itemName, newItem);
+    }
+    
     /**
      * @return The short description of the room
      * (the one that was defined in the constructor).
@@ -92,7 +99,8 @@ public class Room
     /**
      * Items
      */
-//    private String getItemName() {
+//    private String getItem() {
 //        
 //    }
+
 }
