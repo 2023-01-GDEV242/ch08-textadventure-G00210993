@@ -1,4 +1,4 @@
-import java.util.ArrayList; 
+import java.util.HashMap;
 
 /**
  *  This class is the main class of the "World of Zuul" application. 
@@ -22,7 +22,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
 //    private int item;
-    ArrayList<String> bag = new ArrayList<String>();
+//    ArrayList<String> bag = new ArrayList<String>();
 
     /**
      * Create the game and initialise its internal map.
@@ -184,6 +184,14 @@ public class Game
                 goRoom(command);
                 break;
                 
+            case TAKE:
+                takeItem();
+                break;
+                
+//            case DROP:
+//                dropItem(commmand)
+//                break;
+                
             case QUIT:
                 wantToQuit = quit(command);
                 break;
@@ -232,6 +240,28 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
     }
+    
+    private void takeItem()
+    {
+        if(currentRoom.hasItem() == true) {
+            Item itemToTake = currentRoom.getItem();
+            
+            System.out.println("You picked up the " + itemToTake.getItemDesc() + "!");
+        }
+        
+        else {
+            System.out.println("There are no items to pickup here.");    
+        }
+    }
+    
+//    private void dropItem(Command command) {
+//        if(!command.hasSecondWord()) {
+//            System.out.println("Drop what?");
+//            return;
+//        }
+//        
+//        String itemToDrop = command.get
+//    }
     
     /** 
      * "Quit" was entered. Check the rest of the command to see

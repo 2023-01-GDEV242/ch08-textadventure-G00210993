@@ -96,6 +96,10 @@ public class Room
             returnString += "You see a " + item.getItemDesc();
         }
         
+        else {
+            returnString += "There are no items to pick up here.";    
+        }
+        
         return returnString;
     }
 
@@ -110,11 +114,17 @@ public class Room
         return exits.get(direction);
     }
     
+    public boolean hasItem() {
+        return item != null;
+    }
+    
     /**
      * Items
      */
-//    private String getItem() {
-//        
-//    }
+    public Item getItem() {
+    Item itemToReturn = item;
+    this.item = null;
+    return itemToReturn;
+    }
 
 }
