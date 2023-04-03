@@ -28,14 +28,14 @@ public class Item
     }
     
     /**
-     * 
+     * @return itemDesc returns the description of item
      */
     public String getItemDesc() {
         return itemDesc;
     }
     
     /**
-     * 
+     * @return itemWeight returns the weight of item
      */
     public int getItemWeight() {
         return itemWeight;

@@ -45,7 +45,7 @@ public class Room
     }
 
     /**
-     * 
+     * @param 
      */
     public void setItem(Item item) { 
         this.item = item;
@@ -68,7 +68,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + "\n" + getItemString() + "\n" + getExitString();
+        return "You are " + description + getItemString() + "\n" + getExitString();
     }
 
     /**
@@ -87,17 +87,14 @@ public class Room
     }
     
     /**
-     * 
+     * Return a string describing the items in the room, for example
+     * @return returnString Items located in the current room.
      */
     private String getItemString() {
         String returnString = "";
         
         if(item != null) {
-            returnString += "You see a " + item.getItemDesc();
-        }
-        
-        else {
-            returnString += "There are no items to pick up here.";    
+            returnString += "\n" + "You see a " + item.getItemDesc();
         }
         
         return returnString;
@@ -119,12 +116,12 @@ public class Room
     }
     
     /**
-     * Items
+     * @return
      */
     public Item getItem() {
-    Item itemToReturn = item;
-    this.item = null;
-    return itemToReturn;
+        Item itemToReturn = item;
+        this.item = null;
+        return itemToReturn;
     }
 
 }

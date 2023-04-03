@@ -68,11 +68,11 @@ public class Game
         pokeBall = new Item("Poke Ball", 10);
         pokeFlute = new Item("Poke Flute", 5);
         
-        // initialize neighboring towns
+        // initialize neighboring towns and items
         palletTown.setExit("north", viridianCity);
         palletTown.setExit("south", cinnabarIsland);
         palletTown.setItem(pokeBall);
-
+        
         viridianCity.setExit("north", viridianForest);
         viridianCity.setExit("south", palletTown);
         viridianCity.setExit("west", victoryRoad);
@@ -112,6 +112,7 @@ public class Game
         lavenderTown.setExit("north", rockTunnel);
         //lavenderTown.setExit("south", );
         lavenderTown.setExit("west", saffronCity);
+        palletTown.setItem(pokeFlute);
         
         celadonCity.setExit("east", saffronCity);
         celadonCity.setExit("west", bikeRoute);
@@ -131,7 +132,7 @@ public class Game
 
     
     /**
-     *  Main play routine.  Loops until end of play.
+     * Main play routine. Loops until end of play.
      */
     public void play() 
     {            
@@ -238,26 +239,33 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("There is no where to go in this direction!");
         }
         else {
+            prevRoom = currentRoom;
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
     }
     
+    /**
+     * Try to go back to the previous location 1 time.
+     */
     private void goBack() {
         if (prevRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("You have not been anywhere previously!");
         }
 
         else {
-            prevRoom = currentRoom;
+            currentRoom = prevRoom;
             System.out.println(currentRoom.getLongDescription());
         }
         
     }
     
+    /**
+     * If the current location has an item, pick it up.
+     */
     private void takeItem()
     {
         if(currentRoom.hasItem() == true) {
