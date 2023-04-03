@@ -190,7 +190,7 @@ public class Game
                 break;
                 
 //            case DROP:
-//                dropItem(commmand)
+//                dropItem = drop(commmand);
 //                break;
             
             case BACK:
@@ -250,7 +250,7 @@ public class Game
         if (prevRoom == null) {
             System.out.println("There is no door!");
         }
-        
+
         else {
             prevRoom = currentRoom;
             System.out.println(currentRoom.getLongDescription());
