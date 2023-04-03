@@ -21,6 +21,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Room prevRoom;
 //    private int item;
 //    ArrayList<String> bag = new ArrayList<String>();
 
@@ -191,6 +192,10 @@ public class Game
 //            case DROP:
 //                dropItem(commmand)
 //                break;
+            
+            case BACK:
+                goBack();
+                break;
                 
             case QUIT:
                 wantToQuit = quit(command);
@@ -241,11 +246,22 @@ public class Game
         }
     }
     
+    private void goBack() {
+        if (prevRoom == null) {
+            System.out.println("There is no door!");
+        }
+        
+        else {
+            prevRoom = currentRoom;
+            System.out.println(currentRoom.getLongDescription());
+        }
+        
+    }
+    
     private void takeItem()
     {
         if(currentRoom.hasItem() == true) {
             Item itemToTake = currentRoom.getItem();
-            
             System.out.println("You picked up the " + itemToTake.getItemDesc() + "!");
         }
         

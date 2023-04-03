@@ -1,0 +1,10 @@
+Features:
+
+Level B Elements
+- add items with weight and description
+
+Level A Elements
+
+Extra Credit Elements
+- allow player to take items
+
