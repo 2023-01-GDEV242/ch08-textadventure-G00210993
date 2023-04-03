@@ -63,6 +63,7 @@ public class Room
     /**
      * Return a description of the room in the form:
      *     You are in the kitchen.
+     *     You see an item(lbs)!
      *     Exits: north west
      * @return A long description of this room
      */
@@ -94,7 +95,7 @@ public class Room
         String returnString = "";
         
         if(item != null) {
-            returnString += "\n" + "You see a " + item.getItemDesc();
+            returnString += "\n" + "You see a " + item.getItemDesc() + "(" + item.getItemWeight() + "lbs)" + "!";
         }
         
         return returnString;
@@ -116,7 +117,7 @@ public class Room
     }
     
     /**
-     * @return
+     * @return itemToReturn
      */
     public Item getItem() {
         Item itemToReturn = item;

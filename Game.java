@@ -22,8 +22,9 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Room prevRoom;
-//    private int item;
-//    ArrayList<String> bag = new ArrayList<String>();
+    private int item = 0;
+    private int maxWeight = 6;
+    HashMap<String, String> bag = new HashMap<String, String>();
 
     /**
      * Create the game and initialise its internal map.
@@ -65,8 +66,8 @@ public class Game
         cinnabarIsland = new Room("on cinnabar island");
         
         // create items
-        pokeBall = new Item("Poke Ball", 10);
-        pokeFlute = new Item("Poke Flute", 5);
+        pokeBall = new Item("Poke Ball", 1);
+        pokeFlute = new Item("Poke Flute", 2);
         
         // initialize neighboring towns and items
         palletTown.setExit("north", viridianCity);
@@ -112,7 +113,7 @@ public class Game
         lavenderTown.setExit("north", rockTunnel);
         //lavenderTown.setExit("south", );
         lavenderTown.setExit("west", saffronCity);
-        palletTown.setItem(pokeFlute);
+        lavenderTown.setItem(pokeFlute);
         
         celadonCity.setExit("east", saffronCity);
         celadonCity.setExit("west", bikeRoute);

@@ -2,9 +2,9 @@ Features:
 
 Level B Elements
 - add items with weight and description
+- back command (one room)
 
 Level A Elements
 
 Extra Credit Elements
 - allow player to take items
-
