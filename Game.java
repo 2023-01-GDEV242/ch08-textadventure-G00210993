@@ -42,7 +42,7 @@ public class Game
     { 
         Room palletTown, viridianCity, victoryRoad, indigoPlateau, viridianForest, pewterCity, mtMoon,
         ceruleanCity, billsHouse, rockTunnel, saffronCity, vermillionCity, lavenderTown, celadonCity, 
-        bikeRoute, fuschiaCity, cinnabarIsland; 
+        bikeRoute, fuschiaCity, routeTwelve, cinnabarIsland; 
       
         Item pokeBall, pokeFlute;
         
@@ -63,6 +63,7 @@ public class Game
         celadonCity = new Room("in celadon city");
         bikeRoute = new Room("on bike route");
         fuschiaCity = new Room("in fuschia city");
+        routeTwelve = new Room("on route 12");
         cinnabarIsland = new Room("on cinnabar island");
         
         // create items
@@ -108,10 +109,10 @@ public class Game
         saffronCity.setExit("west", celadonCity);
         
         vermillionCity.setExit("north", saffronCity);
-        //vermillionCity.setExit("east", );
+        vermillionCity.setExit("east", routeTwelve);
         
         lavenderTown.setExit("north", rockTunnel);
-        //lavenderTown.setExit("south", );
+        lavenderTown.setExit("south", routeTwelve);
         lavenderTown.setExit("west", saffronCity);
         lavenderTown.setItem(pokeFlute);
         
@@ -121,9 +122,13 @@ public class Game
         bikeRoute.setExit("east", celadonCity);
         bikeRoute.setExit("south", fuschiaCity);
         
-        //fuschiaCity.setExit("east", );
+        fuschiaCity.setExit("north", routeTwelve);
         fuschiaCity.setExit("south", cinnabarIsland);
         fuschiaCity.setExit("west", bikeRoute);
+        
+        routeTwelve.setExit("north", lavenderTown);
+        routeTwelve.setExit("south", fuschiaCity);
+        routeTwelve.setExit("west", vermillionCity);
         
         cinnabarIsland.setExit("north", palletTown);
         cinnabarIsland.setExit("east", fuschiaCity);
@@ -266,6 +271,7 @@ public class Game
     
     /**
      * If the current location has an item, pick it up.
+     * Put the item in your bag if theres space.
      */
     private void takeItem()
     {
