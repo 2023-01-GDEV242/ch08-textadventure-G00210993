@@ -112,6 +112,9 @@ public class Room
         return exits.get(direction);
     }
     
+    /**
+     * return
+     */
     public boolean hasItem() {
         return item != null;
     }
