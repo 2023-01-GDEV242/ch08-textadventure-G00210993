@@ -21,7 +21,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private int item;
+//    private int item;
     ArrayList<String> bag = new ArrayList<String>();
 
     /**
@@ -31,7 +31,6 @@ public class Game
     {
         createRooms();
         parser = new Parser();
-        createItems();
     }
 
     /**
@@ -43,6 +42,8 @@ public class Game
         ceruleanCity, billsHouse, rockTunnel, saffronCity, vermillionCity, lavenderTown, celadonCity, 
         bikeRoute, fuschiaCity, cinnabarIsland; 
       
+        Item pokeBall, pokeFlute;
+        
         // create locations
         palletTown = new Room("in pallet town");
         viridianCity = new Room("in viridian city");
@@ -62,9 +63,14 @@ public class Game
         fuschiaCity = new Room("in fuschia city");
         cinnabarIsland = new Room("on cinnabar island");
         
+        // create items
+        pokeBall = new Item("Poke Ball", 10);
+        pokeFlute = new Item("Poke Flute", 5);
+        
         // initialize neighboring towns
         palletTown.setExit("north", viridianCity);
         palletTown.setExit("south", cinnabarIsland);
+        palletTown.setItem(pokeBall);
 
         viridianCity.setExit("north", viridianForest);
         viridianCity.setExit("south", palletTown);
@@ -120,23 +126,7 @@ public class Game
         cinnabarIsland.setExit("east", fuschiaCity);
         
         currentRoom = palletTown;  // start game in pallet town
-    }
-
-    /**
-     * Create all the items.
-     */
-    private void createItems()
-    { 
-        Item pokeBall, pokeFlute; 
-      
-        // create items
-        pokeBall = new Item("Poke Ball", "A tool for catching wild Pokémon.", 10);
-        pokeFlute = new Item("Poke Flute", "A sweet-sounding flute that awakens Pokémon.", 5);
-        
-        // initialize items
-        //palletTown.setItem("pokeBall", 10);
-        
-    }    
+    }  
 
     
     /**
@@ -197,14 +187,6 @@ public class Game
             case QUIT:
                 wantToQuit = quit(command);
                 break;
-                
-            case BAG:
-                printBag();
-                break;
-                
-//            case LOOK:
-//                look();
-//               break;
         }
         return wantToQuit;
     }
@@ -249,27 +231,6 @@ public class Game
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
-    }
-    
-    /**
-     * Look 
-     */
-//    private void look() {
-//        if(currentRoom == palletTown) {
-//           System.out.println("You found a poke ball!");
-//        }
-        
-//        else {
-//           System.out.println("You found nothing");
-//        }
-//    }
-    
-    /**
-     * Print out which items are in your bag and how much they weigh.
-     */
-    private void printBag() {
-        System.out.println("Items:");
-        parser.showCommands();
     }
     
     /** 
