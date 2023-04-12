@@ -2,9 +2,13 @@ Features:
 
 Level B Elements
 - add items with weight and description
-- back command (one room)
+- implement back command (one room)
 
 Level A Elements
+- npc's with clues (WIP)
 
 Extra Credit Elements
+- implement an item
 - allow player to take items
+- implement a collection of items as inventory (WIP)
+- add weight to items so player can only carry specified weight (WIP)
