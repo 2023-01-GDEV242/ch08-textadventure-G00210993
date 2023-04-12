@@ -32,6 +32,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        item = null;
     }
 
     /**
@@ -50,6 +51,22 @@ public class Room
     public void setItem(Item item) { 
         this.item = item;
     }
+
+    /**
+     * @return itemToReturn
+     */
+    public Item getItem() {
+        Item itemToReturn = item;
+        this.item = null;
+        return itemToReturn;
+    }
+    
+    /**
+     * return
+     */
+    public boolean hasItem() {
+        return item != null;
+    }
     
     /**
      * @return The short description of the room
@@ -63,7 +80,7 @@ public class Room
     /**
      * Return a description of the room in the form:
      *     You are in the kitchen.
-     *     You see an item(lbs)!
+     *     You see an item(lb)!
      *     Exits: north west
      * @return A long description of this room
      */
@@ -95,7 +112,7 @@ public class Room
         String returnString = "";
         
         if(item != null) {
-            returnString += "\n" + "You see a " + item.getItemDesc() + "(" + item.getItemWeight() + "lbs)" + "!";
+            returnString += "\n" + "You see a " + item.getItemDesc() + "(" + item.getItemWeight() + "lb)!";
         }
         
         return returnString;
@@ -111,21 +128,4 @@ public class Room
     {
         return exits.get(direction);
     }
-    
-    /**
-     * return
-     */
-    public boolean hasItem() {
-        return item != null;
-    }
-    
-    /**
-     * @return itemToReturn
-     */
-    public Item getItem() {
-        Item itemToReturn = item;
-        this.item = null;
-        return itemToReturn;
-    }
-
 }

@@ -25,6 +25,8 @@ public class Game
     private int item = 0;
     private int maxWeight = 6;
     HashMap<String, String> bag = new HashMap<String, String>();
+    
+    private Room palletTown1;
 
     /**
      * Create the game and initialise its internal map.
@@ -133,6 +135,9 @@ public class Game
         cinnabarIsland.setExit("north", palletTown);
         cinnabarIsland.setExit("east", fuschiaCity);
         
+        // declare towns
+        palletTown1 = palletTown;
+        
         currentRoom = palletTown;  // start game in pallet town
     }  
 
@@ -162,7 +167,7 @@ public class Game
     {
         System.out.println();
         System.out.println("Welcome to the World of Pokemon!");
-        System.out.println("You are now in the Kanto Region.");
+        System.out.println("You have recently become the Pokemon champion and may freely roam the Kanto region");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -195,10 +200,14 @@ public class Game
             case TAKE:
                 takeItem();
                 break;
+            
+            case TALK:
+                talkTo();
+                break;
                 
-//            case DROP:
-//                dropItem = drop(commmand);
-//                break;
+            //case DROP:
+                //dropItem = drop(commmand);
+                //break;
             
             case BACK:
                 goBack();
@@ -220,8 +229,9 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("You are back home after becoming the pokemon champion");
+        System.out.println("There is only one thing left to do");
+        System.out.println("Find your rival Caio and challenge him to a battle");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
@@ -254,20 +264,6 @@ public class Game
         }
     }
     
-    /**
-     * Try to go back to the previous location 1 time.
-     */
-    private void goBack() {
-        if (prevRoom == null) {
-            System.out.println("You have not been anywhere previously!");
-        }
-
-        else {
-            currentRoom = prevRoom;
-            System.out.println(currentRoom.getLongDescription());
-        }
-        
-    }
     
     /**
      * If the current location has an item, pick it up.
@@ -285,15 +281,39 @@ public class Game
         }
     }
     
-//    private void dropItem(Command command) {
-//        if(!command.hasSecondWord()) {
-//            System.out.println("Drop what?");
-//            return;
-//        }
-//        
-//        String itemToDrop = command.get
-//    }
+    /**
+     * Talk
+     */
+    private void talkTo() {
+        if(currentRoom == palletTown1) {
+            System.out.println("Mom: Welcome home");
+        }
+    }
+        
+    //private void dropItem(Command command) {
+        //if(!command.hasSecondWord()) {
+            //System.out.println("Drop what?");
+            //return;
+        //}
+        
+        //String itemToDrop = command.get
+    //}
     
+    /**
+     * Try to go back to the previous location 1 time.
+     */
+    private void goBack() {
+        if (prevRoom == null) {
+            System.out.println("You have not been anywhere previously!");
+        }
+
+        else {
+            currentRoom = prevRoom;
+            System.out.println(currentRoom.getLongDescription());
+        }
+        
+    }
+
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
