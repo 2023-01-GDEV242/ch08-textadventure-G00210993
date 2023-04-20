@@ -194,6 +194,9 @@ public class Game
         System.out.println();
         System.out.println("Welcome to the World of Pokemon!");
         System.out.println("You have recently become the Pokemon champion and may freely roam the Kanto region");
+        System.out.println("However, there is still currently one more challenge waiting to be ");
+        System.out.println("You have to find your rivel Caio and challenge him to a battle");
+        System.out.println("Make sure to find him before it gets too dark outside though!");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -302,7 +305,11 @@ public class Game
      */
     private void takeItem()
     {
-        if(currentRoom.hasItem() == true) {
+        if(currentRoom.hasItem() == true && item > 6) {
+            System.out.println("You can't pick this up, your bag is full");    
+        }
+        
+        else if(currentRoom.hasItem() == true && item < 6) {
             Item itemToTake = currentRoom.getItem();
             System.out.println("You picked up the " + itemToTake.getItemDesc() + "!");
         }
