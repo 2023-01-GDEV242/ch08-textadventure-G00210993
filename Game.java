@@ -258,12 +258,12 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are back home after becoming the pokemon champion");
-        System.out.println("There is only one thing left to do");
-        System.out.println("Find your rival Caio and challenge him to a battle");
+        System.out.println("Find your rival Caio and challenge him to a battle.");
+        System.out.println("Make sure to find him before it gets too dark outside though.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
+        System.out.println("Your bag has a limit of 6 items.");
     }
 
     /** 
