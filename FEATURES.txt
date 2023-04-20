@@ -3,9 +3,12 @@ Features:
 Level B Elements
 - add items with weight and description
 - implement back command (one room)
+-
 
 Level A Elements
-- npc's with clues (WIP)
+- npc's with clues
+-
+-
 
 Extra Credit Elements
 - implement an item

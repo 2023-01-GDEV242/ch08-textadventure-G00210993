@@ -87,8 +87,8 @@ public class Game
         cinnabarIsland = new Room("on cinnabar island");
         
         // create items
-        pokeBall = new Item("Poke Ball", 1);
-        pokeFlute = new Item("Poke Flute", 2);
+        pokeBall = new Item("PokeBall", 1);
+        pokeFlute = new Item("PokeFlute", 2);
         
         
         // initialize neighboring towns and items
