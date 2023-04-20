@@ -41,7 +41,7 @@ public class Game
     private Room vermillionCity1;
     private Room lavenderTown1;
     private Room celadonCity1;
-    private Room bikeRoute1;
+    private Room cyclingRoad1;
     private Room fuschiaCity1;
     private Room routeTwelve1;
     private Room cinnabarIsland1;
@@ -63,7 +63,7 @@ public class Game
     { 
         Room palletTown, viridianCity, victoryRoad, indigoPlateau, viridianForest, pewterCity, mtMoon,
         ceruleanCity, billsHouse, rockTunnel, saffronCity, vermillionCity, lavenderTown, celadonCity, 
-        bikeRoute, fuschiaCity, routeTwelve, cinnabarIsland; 
+        cyclingRoad, fuschiaCity, routeTwelve, cinnabarIsland; 
       
         Item pokeBall, pokeFlute;
 
@@ -82,7 +82,7 @@ public class Game
         vermillionCity = new Room("in vermillion city");
         lavenderTown = new Room("in lavender town");
         celadonCity = new Room("in celadon city");
-        bikeRoute = new Room("on bike route");
+        cyclingRoad = new Room("on cycling road");
         fuschiaCity = new Room("in fuschia city");
         routeTwelve = new Room("on route 12");
         cinnabarIsland = new Room("on cinnabar island");
@@ -90,7 +90,6 @@ public class Game
         // create items
         pokeBall = new Item("PokeBall", 1);
         pokeFlute = new Item("PokeFlute", 2);
-        
         
         // initialize neighboring towns and items
         palletTown.setExit("north", viridianCity);
@@ -146,14 +145,14 @@ public class Game
         lavenderTown.setItem(pokeFlute);
         
         celadonCity.setExit("east", saffronCity);
-        celadonCity.setExit("west", bikeRoute);
+        celadonCity.setExit("west", cyclingRoad);
         
-        bikeRoute.setExit("east", celadonCity);
-        bikeRoute.setExit("south", fuschiaCity);
+        cyclingRoad.setExit("east", celadonCity);
+        cyclingRoad.setExit("south", fuschiaCity);
         
         fuschiaCity.setExit("north", routeTwelve);
         fuschiaCity.setExit("south", cinnabarIsland);
-        fuschiaCity.setExit("west", bikeRoute);
+        fuschiaCity.setExit("west", cyclingRoad);
         
         routeTwelve.setExit("north", lavenderTown);
         routeTwelve.setExit("south", fuschiaCity);
@@ -164,10 +163,26 @@ public class Game
         
         // declare towns
         palletTown1 = palletTown;
+        viridianCity1 = viridianCity;
+        victoryRoad1 = victoryRoad;
+        indigoPlateau1 = indigoPlateau;
+        viridianForest1 = viridianForest;
+        pewterCity1 = pewterCity;
+        mtMoon1 = mtMoon;
+        ceruleanCity1 = ceruleanCity;
+        billsHouse1 = billsHouse;
+        rockTunnel1 = rockTunnel;
+        saffronCity1 = saffronCity;
+        vermillionCity1 = vermillionCity;
+        lavenderTown1 = lavenderTown;
+        celadonCity1 = celadonCity;
+        cyclingRoad1 = cyclingRoad;
+        fuschiaCity1 = fuschiaCity;
+        routeTwelve1 = routeTwelve;
+        cinnabarIsland1 = cinnabarIsland;
         
         currentRoom = palletTown;  // start game in pallet town
     }  
-
     
     /**
      * Main play routine. Loops until end of play.
