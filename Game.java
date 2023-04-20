@@ -53,7 +53,7 @@ public class Game
     {
         createRooms();
         parser = new Parser();
-        String[] bag = new String[3];
+        String[] bag = new String [4];
     }
 
     /**
@@ -264,7 +264,7 @@ public class Game
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
-        System.out.println("Your bag has a limit of 6 items.");
+        System.out.println("Your bag has a limit of 4 items.");
     }
 
     /** 
@@ -306,11 +306,11 @@ public class Game
      */
     private void takeItem()
     {
-        if(currentRoom.hasItem() == true && item > 3) {
+        if(currentRoom.hasItem() == true && item > 4) {
             System.out.println("You can't pick this up, your bag is full");    
         }
         
-        else if(currentRoom.hasItem() == true && item < 3 ) {
+        else if(currentRoom.hasItem() == true && item < 4) {
             Item itemToTake = currentRoom.getItem();
             System.out.println("You picked up the " + itemToTake.getItemDesc() + "!");
         }
