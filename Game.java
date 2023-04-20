@@ -53,6 +53,7 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+        String[] bag = new String[3];
     }
 
     /**
@@ -305,11 +306,11 @@ public class Game
      */
     private void takeItem()
     {
-        if(currentRoom.hasItem() == true && item > 6) {
+        if(currentRoom.hasItem() == true && item > 3) {
             System.out.println("You can't pick this up, your bag is full");    
         }
         
-        else if(currentRoom.hasItem() == true && item < 6) {
+        else if(currentRoom.hasItem() == true && item < 3 ) {
             Item itemToTake = currentRoom.getItem();
             System.out.println("You picked up the " + itemToTake.getItemDesc() + "!");
         }
