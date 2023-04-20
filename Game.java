@@ -65,17 +65,17 @@ public class Game
         bikeRoute, fuschiaCity, routeTwelve, cinnabarIsland; 
       
         Item pokeBall, pokeFlute;
-        
+
         // create locations
-        palletTown = new Room("in pallet town");
+        palletTown = new Room("in pallet town" + "\nMom is waiting for you outside home.");
         viridianCity = new Room("in viridian city");
         victoryRoad = new Room("at victory road");
-        indigoPlateau = new Room("at the indigo plateau");
+        indigoPlateau = new Room("at the indigo plateau" + "\nYou found Caio!");
         viridianForest = new Room("in viridian forest");
         pewterCity = new Room("in pewter city");
         mtMoon = new Room("in mt moon");
         ceruleanCity = new Room("in cerulean city");
-        billsHouse = new Room("in bills house");
+        billsHouse = new Room("outside bills house" + "\nIt looks like Bill is home");
         rockTunnel = new Room("in rock tunnel");
         saffronCity = new Room("in saffron city");
         vermillionCity = new Room("in vermillion city");
@@ -89,6 +89,7 @@ public class Game
         // create items
         pokeBall = new Item("Poke Ball", 1);
         pokeFlute = new Item("Poke Flute", 2);
+        
         
         // initialize neighboring towns and items
         palletTown.setExit("north", viridianCity);
@@ -287,9 +288,9 @@ public class Game
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
-         
+        
+        // Finish game 
         if(currentRoom == indigoPlateau1) {
-            System.out.println("You found Caio!");
             finished = true;
         }
     }
@@ -319,7 +320,9 @@ public class Game
             System.out.println("Mom: Welcome home!");
         }
         else if(currentRoom == billsHouse1) {
-            System.out.println("Bill: ");
+            System.out.println("Bill: Hey bud!");
+            System.out.println("Bill: You should have been here a minute ago, Caio was just here.");
+            System.out.println("Bill: He said something about heading south.");
         }
     }
         
