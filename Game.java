@@ -24,10 +24,28 @@ public class Game
     private Room prevRoom;
     private int item = 0;
     private int maxWeight = 6;
+    private boolean finished = false;
     HashMap<String, String> bag = new HashMap<String, String>();
     
     private Room palletTown1;
-
+    private Room viridianCity1;
+    private Room victoryRoad1;
+    private Room indigoPlateau1;
+    private Room viridianForest1;
+    private Room pewterCity1;
+    private Room mtMoon1;
+    private Room ceruleanCity1;
+    private Room billsHouse1;
+    private Room rockTunnel1;
+    private Room saffronCity1;
+    private Room vermillionCity1;
+    private Room lavenderTown1;
+    private Room celadonCity1;
+    private Room bikeRoute1;
+    private Room fuschiaCity1;
+    private Room routeTwelve1;
+    private Room cinnabarIsland1;
+    
     /**
      * Create the game and initialise its internal map.
      */
@@ -80,7 +98,8 @@ public class Game
         viridianCity.setExit("north", viridianForest);
         viridianCity.setExit("south", palletTown);
         viridianCity.setExit("west", victoryRoad);
-
+        viridianCity.setItem(pokeBall);
+        
         victoryRoad.setExit("north", indigoPlateau);
         victoryRoad.setExit("south", viridianCity);
         
@@ -88,22 +107,28 @@ public class Game
 
         viridianForest.setExit("north", pewterCity);
         viridianForest.setExit("south", viridianCity);
-
+        viridianForest.setItem(pokeBall);
+        
         pewterCity.setExit("east", mtMoon);
         pewterCity.setExit("south", viridianCity);
+        pewterCity.setItem(pokeBall);
         
         mtMoon.setExit("east", ceruleanCity);
         mtMoon.setExit("west", pewterCity);
+        mtMoon.setItem(pokeBall);
         
         ceruleanCity.setExit("north", billsHouse);
         ceruleanCity.setExit("east", rockTunnel);
         ceruleanCity.setExit("south", saffronCity);
         ceruleanCity.setExit("west", ceruleanCity);
+        ceruleanCity.setItem(pokeBall);
         
         billsHouse.setExit("south", ceruleanCity);
+        billsHouse.setItem(pokeBall);
         
         rockTunnel.setExit("west", ceruleanCity);
         rockTunnel.setExit("south", lavenderTown);
+        rockTunnel.setItem(pokeBall);
         
         saffronCity.setExit("north", ceruleanCity);
         saffronCity.setExit("east", lavenderTown);
@@ -254,13 +279,18 @@ public class Game
         // Try to leave current location.
         Room nextRoom = currentRoom.getExit(direction);
 
-        if (nextRoom == null) {
+        if(nextRoom == null) {
             System.out.println("There is no where to go in this direction!");
         }
         else {
             prevRoom = currentRoom;
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+        }
+         
+        if(currentRoom == indigoPlateau1) {
+            System.out.println("You found Caio!");
+            finished = true;
         }
     }
     
@@ -286,7 +316,10 @@ public class Game
      */
     private void talkTo() {
         if(currentRoom == palletTown1) {
-            System.out.println("Mom: Welcome home");
+            System.out.println("Mom: Welcome home!");
+        }
+        else if(currentRoom == billsHouse1) {
+            System.out.println("Bill: ");
         }
     }
         
